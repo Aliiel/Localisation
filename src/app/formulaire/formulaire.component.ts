@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, ReactiveFormsModule} from '@angular/forms';
-import { CodePostalService } from '../code-postal.service';
+import { TransmissionService } from '../transmission.service';
 
 
 @Component({
@@ -15,13 +15,13 @@ export class FormulaireComponent {
   public champ = new FormControl('');
   public codePostal:string|any = '';
 
-  constructor (private codePostalService: CodePostalService) {}
+  constructor (private transmissionService: TransmissionService) {}
 
   recupererCodePostal () {
 
     this.codePostal = this.champ.value;
 
-    this.codePostalService.setCodePostal(this.codePostal);
+    this.transmissionService.setDonnee(this.codePostal);
 
   }
 

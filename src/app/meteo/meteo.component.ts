@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { VilleService } from '../ville.service';
+import { TransmissionService } from '../transmission.service';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -9,29 +9,37 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './meteo.component.html',
   styleUrl: './meteo.component.css'
 })
+
 export class MeteoComponent {
 
+  private configUrl = "https://api.openweathermap.org/data/2.5/weather?city=";
+  private cleAPI = "&appid=898a50f155c3110289fd20cea175abab";
   public ville:string|any = '';
 
   constructor (
-    private villeService: VilleService,
+    private transmissionService: TransmissionService,
     private http: HttpClient
   ) {};
 
 
   ngOnInit(): void {
 
-    this.villeService.villeSubject.subscribe((ville: string) => {
-
+    this.transmissionService.donneeSubject.subscribe((ville: string) => {
       this.ville = ville;
       console.log(this.ville);
     });
+
   }
 
 
   afficherMeteo () {
 
-    console.log(this.ville);
-  }
+    return this.http.get(this.configUrl + this.ville + this.cleAPI)
 
+    .subscribe((data:any) => {
+
+      console.log(data);
+
+    })
+  }
 }
