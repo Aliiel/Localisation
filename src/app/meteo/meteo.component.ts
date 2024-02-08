@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TransmissionService } from '../transmission.service';
+import { VilleService } from '../ville.service';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -16,6 +16,7 @@ export class MeteoComponent {
   private cleAPI = "&appid=898a50f155c3110289fd20cea175abab";
   private celsius = "&units=metric";
   private fr = "&lang=fr";
+  private locFr = ",fr";
   private iconURL = "https://openweathermap.org/img/wn/";
   public ville:string|any = '';
   public temperature:string = '';
@@ -23,24 +24,27 @@ export class MeteoComponent {
   public icon:string|any = '';
 
   constructor (
-    private transmissionService: TransmissionService,
+    private villeService: VilleService,
     private http: HttpClient
   ) {};
 
 
   ngOnInit(): void {
 
-    this.transmissionService.donneeSubject.subscribe((ville: string) => {
+    this.villeService.villeSubject.subscribe((ville: string) => {
       this.ville = ville;
       console.log(this.ville);
+
+      this.afficherMeteo(this.ville);
+
     });
 
   }
 
 
-  afficherMeteo () {
+  afficherMeteo (ville:string) {
 
-    return this.http.get(this.configUrl + this.ville + this.cleAPI + this.celsius + this.fr)
+    return this.http.get(this.configUrl + this.ville + this.locFr + this.cleAPI + this.celsius + this.fr)
 
     .subscribe((data:any) => {
 

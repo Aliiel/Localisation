@@ -6,28 +6,28 @@ import { Subject } from 'rxjs';
 })
 export class CoordonneesService {
 
-  public axeX:string|any = '';
-  public axeY:string|any = '';
-  public axeXSubject: Subject<string> = new Subject<string>();
-  public axeYSubject: Subject<string> = new Subject<string>();
+  public axeX:number = 0;
+  public axeY:number = 0;
+  public axeXSubject: Subject<number> = new Subject<number>();
+  public axeYSubject: Subject<number> = new Subject<number>();
 
   constructor() { }
 
 
-  getAxeX(): string | undefined {
+  getAxeX(): number {
     return this.axeX;
   }
 
-  getAxeY(): string | undefined {
+  getAxeY(): number {
     return this.axeY;
   }
 
-  setAxeX(axeX: string): void {
+  setAxeX(axeX: number): void {
     this.axeX = axeX;
     this.axeXSubject.next(axeX); 
   }
 
-  setAxeY(axeY: string): void {
+  setAxeY(axeY: number): void {
     this.axeY = axeY;
     this.axeYSubject.next(axeY); 
   }
