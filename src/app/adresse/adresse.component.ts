@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { TransmissionService } from '../transmission.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { CoordonneesService } from '../coordonnees.service';
 
 
 @Component({
@@ -23,7 +24,8 @@ export class AdresseComponent {
 
   constructor (
     private transmissionService: TransmissionService,
-    private http: HttpClient
+    private http: HttpClient,
+    private coordonneesService: CoordonneesService
     ) { }
 
   ngOnInit(): void {
@@ -32,6 +34,9 @@ export class AdresseComponent {
       this.codePostal = codePostal;
       console.log(this.codePostal);
     });
+
+    this.coordonneesService.setAxeX(this.axeX);
+    this.coordonneesService.setAxeY(this.axeY);
 
     this.afficherVille(this.codePostal);
   }
