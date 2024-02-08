@@ -3,7 +3,9 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
 
 
-body 
-{
-    background: black !important;
+body {
+    background-image: url('./assets/meteo-demain-quel-temps-fera-t-il.jpg');
+    background-attachment: fixed;
+    /* background-repeat: no-repeat; */
+    background-size: cover;
 }
