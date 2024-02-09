@@ -2,34 +2,34 @@
   <app-header></app-header>
   <app-formulaire></app-formulaire>
 
-  <div class="container mt-5 mx-auto">
-  <div class="row justify-content-center align-items-stretch">
+  <div class="container mt-5 mb-5">
+  <div class="row justify-content-center">
     <div class="col-lg-4 mb-3">
-      <div class="card border-dark" style="height: 100%;">
-        <div class="card-body">
-          <h5 class="card-title p-2 text-dark-emphasis bg-dark-subtle border border-dark-subtle rounded-3">
+      <div class="card border-dark d-none animate__animated animate__fadeInLeft" style="height: 100%;" id="adresse">
+        <div class="card-body text-center">
+          <h5 class="card-title p-2 border border-5 border-primary rounded-3 rounded-pill border-opacity-50">
             Adresse</h5>
           <app-adresse></app-adresse>
         </div>
       </div>
     </div>
     <div class="col-lg-4 mb-3">
-      <div class="card border-dark">
-        <div class="card-body">
-          <h5 class="card-title p-2 text-dark-emphasis bg-dark-subtle border border-dark-subtle rounded-3">
+      <div class="card border-dark d-none animate__animated animate__fadeInRight" style="height: 100%;" id="meteo">
+        <div class="card-body text-center">
+          <h5 class="card-title p-2 border border-5 border-primary rounded-3 rounded-pill border-opacity-50">
             Météo</h5>
-          <app-meteo></app-meteo>
+          <app-meteo id="meteo"></app-meteo>
         </div>
       </div>
     </div>
   </div>
   <div class="row justify-content-center">
-    <div class="col-lg-8">
-      <div class="card border-dark" style="height: 100%;">
+    <div class="col-lg-8 mb-5">
+      <div class="card border-dark d-none mb-5 animate__animated animate__fadeInUp" id="carte">
         <div class="card-body">
-          <h5 class="card-title p-3 text-dark-emphasis bg-dark-subtle border border-dark-subtle rounded-3">
+          <h5 class="card-title text-center p-2 border border-5 border-primary rounded-3 rounded-pill border-opacity-50">
             Carte</h5>
-          <app-carte></app-carte>
+          <app-carte id ="carte"></app-carte>
         </div>
       </div>
     </div>

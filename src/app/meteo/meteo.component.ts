@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { VilleService } from '../ville.service';
 import { HttpClient } from '@angular/common/http';
+import { CodePostalService } from '../code-postal.service';
 
 @Component({
   selector: 'app-meteo',
@@ -18,15 +19,17 @@ export class MeteoComponent {
   private fr = "&lang=fr";
   private locFr = ",fr";
   private iconURL = "https://openweathermap.org/img/wn/";
-  public ville:string|any = '';
-  public temperature:string = '';
-  public temps:string = '';
-  public icon:string|any = '';
+  public ville: string | any = '';
+  public temperature: string = '';
+  public temps: string = '';
+  public icon: string | any = '';
+  public codePostal: string | any = '';
 
-  constructor (
+  constructor(
     private villeService: VilleService,
-    private http: HttpClient
-  ) {};
+    private http: HttpClient,
+    private codePostalService: CodePostalService
+  ) { };
 
 
   ngOnInit(): void {
@@ -39,22 +42,27 @@ export class MeteoComponent {
 
     });
 
+    this.codePostalService.codePostalSubject.subscribe((codePostal: string) => {
+
+      this.codePostal = codePostal;
+    })
+
   }
 
 
-  afficherMeteo (ville:string) {
+  afficherMeteo(codePostal: string) {
 
-    return this.http.get(this.configUrl + this.ville + this.locFr + this.cleAPI + this.celsius + this.fr)
+    return this.http.get(this.configUrl + this.codePostal + this.locFr + this.cleAPI + this.celsius + this.fr)
 
-    .subscribe((data:any) => {
+      .subscribe((data: any) => {
 
-      this.temperature = data.main.temp;
-      this.temps = data.weather[0].description;
-      this.icon = this.iconURL + data.weather[0].icon + ".png";
+        this.temperature = data.main.temp;
+        this.temps = data.weather[0].description;
+        this.icon = this.iconURL + data.weather[0].icon + ".png";
 
-      console.log(data);
-      console.log(this.temperature);
+        console.log(data);
+        console.log(this.temperature);
 
-    })
+      })
   }
 }
