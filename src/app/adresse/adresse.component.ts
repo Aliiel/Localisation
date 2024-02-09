@@ -21,6 +21,7 @@ export class AdresseComponent {
   public axeY:number = 0;
   public axeX:number = 0;
   public population:string|any = '';
+  public codeInsee:string|any = '';
 
 
   constructor (
@@ -50,10 +51,15 @@ export class AdresseComponent {
       this.population = data.properties.population;
       this.axeX = data.geometry.coordinates[0];
       this.axeY = data.geometry.coordinates[1];
+      this.codeInsee = data.properties.citycode;
+
+
 
       this.villeService.setVille(this.ville);
       this.coordonneesService.setAxeX(this.axeX);
       this.coordonneesService.setAxeY(this.axeY);
+
+
       console.log("axe X = " + this.axeX);
       console.log("axe Y = " + this.axeY);
 
