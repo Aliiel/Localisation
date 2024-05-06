@@ -1,6 +1,7 @@
 # Localisation
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.2.
+Créer une application permettant d'afficher le nom de la ville, la météo, et l'emplacement de la ville sur une carte à partir de la saisie d'un code postal
 
 ## Development server
 
